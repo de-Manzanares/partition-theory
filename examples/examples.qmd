@@ -22,6 +22,7 @@ format:
         \usepackage{amsmath, amsthm, amssymb}
         \pretocmd{\tableofcontents}{\pagenumbering{roman}}{}{}
         \apptocmd{\tableofcontents}{\clearpage\pagenumbering{arabic}}{}{}
+        \renewcommand\qedsymbol{$\blacksquare$}
 ---
 
 \section{Chapter 1}
@@ -52,13 +53,16 @@ are
 Therefore, the odd multiples of 2 or 3 are exactly the integers congruent to 2, 3, 6, 9, or 10
 modulo 12. \hfill$\blacksquare$
 
-*Proof of the Proposition.* Let $p_α(n)$ denote the number of partitions of $n$ in which each part
-appears two, three, or five times. Let $p_β(n)$ denote the number of partitions of $n$ into parts
-congruent to 2, 3, 6, 9, or 10 modulo 12. Thus
+*Proof of the Proposition.*
+Let $p_α(n)$ denote the number of partitions of $n$
+  in which each part appears two, three, or five times.
+Let $p_β(n)$ denote the number of partitions of $n$
+  into parts congruent to 2, 3, 6, 9, or 10 modulo 12.
+Thus
 $$
-\sum_{n\ge 0}p_α(n)q^n=\prod_{n\ge 1}\left(1+q^{2n}+q^{3n}+q^{5n}\right)
+\sum_{n\ge 0}p_α(n)q^n=\prod_{n\ge 1}\left(1+q^{2n}+q^{3n}+q^{5n}\right),
 $$
-and, by Lemma 1
+and by Lemma 1
 $$
 \sum_{n\ge 0}p_β(n)q^n = \prod_{n\ge 1}\frac{1}{(1-q^{2(2n-1)})(1-q^{3(2n-1)})}.
 $$
@@ -70,6 +74,27 @@ Finally
     &=\sum_{n\ge 0}p_α(n)q^n.
     \tag*{\blacksquare}
 \end{align*}
+
+\begin{proof}[Proof of the Proposition (q-Pochhammer)]
+Let $p_α(n)$ denote the number of partitions of $n$
+  in which each part appears two, three, or five times.
+Let $p_β(n)$ denote the number of partitions of $n$
+  into parts congruent to 2, 3, 6, 9, or 10 modulo 12.
+Thus
+$$
+\sum_{n\ge 0}p_α(n)q^n=(-q^2;q^2)_\infty (-q^3;q^3)_\infty,
+$$
+and by Lemma 1
+$$
+\sum_{n\ge 0}p_β(n)q^n = \frac{1}{(q^2;q^4)_\infty(q^3;q^6)_\infty}.
+$$
+Finally
+  \begin{align*}
+    \sum_{n\ge 0}p_β(n)q^n &= \frac{(q^4;q^4)_\infty (q^6;q^6)_\infty}{(q^2;q^2)_\infty (q^3;q^3)_\infty} \\[0.5em]
+      &= (-q^2;q^2)_\infty (-q^3;q^3)_\infty \\[0.5em]
+      &= \sum_{n\ge 0}p_α(n)q^n.
+  \end{align*}
+\end{proof}
 
 \newpage
 \subsection{Example 2}
@@ -87,6 +112,15 @@ here denoted $p_3(n)$.
   &=\sum_{n\ge 0}p_3(n)q^n.\tag*{\blacksquare}
 \end{align*}
 
+\begin{proof}[Proof (q-Pochhammer)]
+  \begin{align*}
+    \sum_{n\ge 0} p_o(n)q^n &= (-q^2;q^2)_\infty (q;q^2)_\infty^{-1} \\
+      &= \frac{(q^4;q^4)_\infty}{(q^2;q^2)_\infty (q;q^2)_\infty} \\[0.75em]
+      &= \frac{(q^4;q^4)_\infty}{(q;q)_\infty} \\[0.75em]
+      &= \sum_{n\ge 0} p_3(n)q^n.
+  \end{align*}
+\end{proof}
+
 \newpage
 \subsection{Example 3}
 
@@ -103,3 +137,11 @@ more than $2^{m+1}-1$ times, here denoted $p_β(n)$.
     &= \sum_{n\ge 0} p_β(n)q^n.
     \tag*{\blacksquare}
 \end{align*}
+
+\begin{proof}[Proof (q-Pochhammer)]
+  \begin{align*}
+    \sum_{n\ge 0}p_α(n)q^n &= (-q^{2^m},q^{2^m};q^{2^m})_\infty (q;q)_\infty^{-1} \\
+      &= \frac{(q^{2^{m+1}};q^{2^{m+1}})_\infty}{(q;q)_\infty} \\[0.75em]
+      &= \sum_{n\ge 0} p_β(n)q^n.
+  \end{align*}
+\end{proof}
