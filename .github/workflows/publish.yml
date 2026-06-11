@@ -2,9 +2,11 @@ name: Publish Quarto site
 
 on:
   push:
-    branches: main
+    branches:
+      - master
     paths:
-      - "**.qmd"
+      - "*.qmd"
+      - "**/*.qmd"
       - "_quarto.yml"
       - ".github/workflows/publish.yml"
   workflow_dispatch:
@@ -12,6 +14,7 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
 
