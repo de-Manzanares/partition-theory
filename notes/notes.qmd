@@ -18,23 +18,62 @@ format:
         \pretocmd{\tableofcontents}{\pagenumbering{roman}}{}{}
         \apptocmd{\tableofcontents}{\clearpage\pagenumbering{arabic}}{}{}
         \theoremstyle{definition}
+        \newtheorem{thm}{Theorem}
         \newtheorem{prop}{Proposition}
         \newtheorem{cor}{Corollary}[prop]
+        \renewcommand\qedsymbol{$\blacksquare$}
 ---
 
-\section{Propositions}
+\section{My Propositions}
 
 \begin{prop}
   The number of partitions of $n$ in which parts $λ_1, λ_2,\dots,λ_m$ appear at least once equals
   the number of partitions of $n-\sum_{i=1}^{m}λ_i$.
 \end{prop}
 
-\begin{prop}\label{prop:multiples-distinct}
-  The number of partitions of $n$ in which multiples of $x$ must be distinct equals
-  the number of partitions of $n$ in which no part appears more than $2x-1$ times.
-\end{prop}
+:::{.callout-note}
+Proposition \autoref{prop:prop-ex-1-2} is directly inspired by Chapter 1 examples 1 and 2
+from The Theory of Partitions by George E. Andrews.
+:::
 
-\begin{prop}
-  The number of partitions of $n$ in which multiples of $x$ must be distinct equals
-  the number of partitions of $n$ in which no part is divisible by $2x$.
+\begin{prop}\label{prop:prop-ex-1-2}
+  The following are equal:
+      The number of partitions of $n$ in which multiples of $x$ are distinct,
+      here denoted $p_α(n)$;
+      the number of partitions of $n$ in which no part is divisible by $2x$,
+      here denoted $p_β(n)$;
+      the number of partitions of $n$ in which no part appears more than $2x-1$ times,
+      here denoted $p_γ(n)$.
 \end{prop}
+\begin{proof}
+  \begin{align*}
+    \sum_{n\ge 0}p_α(n)q^n &= \prod_{n\ge 1}\left(1+q^{xn}\right)\frac{1-q^{xn}}{1-q^n}\\[0.5em]
+    &= \frac{(q^{2x};q^{2x})_\infty}{(q;q)_\infty}\\[0.5em]
+    &= \sum_{n\ge 0}p_β(n)q^n.
+  \end{align*}
+  By Glashier's Theorem (Theorem~\autoref{thm:glashiers-thm})
+  $p_β(n)$ = $p_γ(n)$,
+  thus
+  $p_\alpha(n)$ = $p_\gamma(n)$.
+\end{proof}
+
+\clearpage
+\section{Theorems}
+
+\begin{thm}[Glashier's Theorem]\label{thm:glashiers-thm}
+  The number of partitions of $n$ in which no part appears more than $d$ times,
+  here denoted $p_α(n)$,
+  equals
+  the number of partitions of $n$ in which no part is a divisible by $d+1$,
+  here denoted $p_β(n)$.
+\end{thm}
+
+\begin{proof}
+  \begin{align*}
+    \sum_{n\ge 0} p_α(n)q^n &= \prod_{n\ge 1}\left(1+q^n+\cdots+q^{dn}\right)\\[0.5em]
+      &= \prod_{n\ge 1}\frac{1-q^{(d+1)n}}{1-q^n}\\[0.5em]
+      &= \frac{(1-q^{d+1})(1-q^{2(d+1)})\cdots}{(1-q)\cdots(1-q^{d+1})\cdots(1-q^{2(d+1)})\cdots}\\[0.5em]
+      &= \prod_{n\ge 1,\,d+1\nmid n}\frac{1}{1-q^n}\\[0.5em]
+      &= \sum_{n\ge 0} p_β(n)q^n.
+  \end{align*}
+\end{proof}
