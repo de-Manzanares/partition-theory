@@ -9,5 +9,9 @@ website:
       - href: index.qmd
       - text: ""
 
+theme:
+    light: flatly
+    dark: darkly
+
 format:
   html: default
