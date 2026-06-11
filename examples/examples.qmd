@@ -1,0 +1,105 @@
+
+---
+title: "Proofs of Selected Examples from The Theory of Partitions"
+author: "D.E. Manzanares"
+date: today
+date-format: "YYYY[.]MM[.]DD"
+crossref:
+  chapters: false
+  sections: false
+  lem-labels: arabic
+  prp-labels: arabic
+format:
+  pdf:
+    documentclass: article
+    papersize: letter
+    title-block: true
+    toc: true
+    number-sections: false
+    colorlinks: true
+    include-in-header:
+      text: |
+        \usepackage{amsmath, amsthm, amssymb}
+        \pretocmd{\tableofcontents}{\pagenumbering{roman}}{}{}
+        \apptocmd{\tableofcontents}{\clearpage\pagenumbering{arabic}}{}{}
+---
+
+\section{Chapter 1}
+
+\subsection{Example 1}
+
+**Proposition.**
+The number of partitions of $n$ in which each part appears two, three, or five times
+equals the number of partitions of $n$ into parts congruent to 2, 3, 6, 9 or 10 modulo 12.
+
+**Lemma 1.** A positive integer is congruent to 2, 3, 6, 9 or 10 modulo 12 iff it is an odd
+multiple of 2 or an odd multiple of 3.
+
+*Proof of Lemma 1.* The odd residue classes modulo 12 are [1], [3], [5], [7], [9], and [11].
+An odd multiple of 2 has the form $2m$, where $m$ is odd. Thus the possible residue classes of $2m$
+are
+\begin{align*}
+&2[1] = 2[7] = [2], \\
+&2[3] = 2[9] = [6], \\
+&2[5]  = 2[11] = [10].
+\end{align*}
+An odd multiple of 3 has the form $3m$, where $m$ is odd. Thus the possible residue classes of $3m$
+are
+\begin{align*}
+&3[1] = 3[5] = 3[9] = [3], \\
+&3[3] = 3[7] = 3[11] = [9].
+\end{align*}
+Therefore, the odd multiples of 2 or 3 are exactly the integers congruent to 2, 3, 6, 9, or 10
+modulo 12. \hfill$\blacksquare$
+
+*Proof of the Proposition.* Let $p_α(n)$ denote the number of partitions of $n$ in which each part
+appears two, three, or five times. Let $p_β(n)$ denote the number of partitions of $n$ into parts
+congruent to 2, 3, 6, 9, or 10 modulo 12. Thus
+$$
+\sum_{n\ge 0}p_α(n)q^n=\prod_{n\ge 1}\left(1+q^{2n}+q^{3n}+q^{5n}\right)
+$$
+and, by Lemma 1
+$$
+\sum_{n\ge 0}p_β(n)q^n = \prod_{n\ge 1}\frac{1}{(1-q^{2(2n-1)})(1-q^{3(2n-1)})}.
+$$
+Finally
+\begin{align*}
+  \sum_{n\ge 0}p_β(n)q^n &=\prod_{n\ge 1} \frac{1-q^{4n}}{1-q^{2n}}\cdot\frac{1-q^{6n}}{1-q^{3n}} \\[0.5em]
+    &=\prod_{n\ge 1}\left(1+q^{2n}\right)\left(1+q^{3n}\right)\\[0.5em]
+    &=\prod_{n\ge 1}\left(1+q^{2n}+q^{3n}+q^{5n}\right)\\[0.5em]
+    &=\sum_{n\ge 0}p_α(n)q^n.
+    \tag*{\blacksquare}
+\end{align*}
+
+\newpage
+\subsection{Example 2}
+
+**Proposition.** The number of partitions of $n$ in which only odd parts may be repeated, here denoted $p_o(n)$,
+equals the number of partitions of $n$ in which no part is repeated more than three times,
+here denoted $p_3(n)$.
+
+*Proof.*
+\begin{align*}
+  \sum_{n\ge 0} p_o(n)q^n&=\prod_{n\ge 1}\left(1+q^{2n}\right)\left(\frac{1}{1-q^{2n-1}}\right)\\[0.5em]
+  &=\prod_{n\ge 1}\left(\frac{1-q^{4n}}{1-q^{2n}}\right)\left(\frac{1}{1-q^{2n-1}}\right)\\[0.5em]
+  &=\frac{\prod_{n\ge1}(1-q^{4n})}{\prod_{n\ge 1}(1-q^{2n})(1-q^{2n-1})}\\[0.5em]
+  &=\prod_{n\ge 1}\frac{1-q^{4n}}{1-q^n}\\[0.5em]
+  &=\sum_{n\ge 0}p_3(n)q^n.\tag*{\blacksquare}
+\end{align*}
+
+\newpage
+\subsection{Example 3}
+
+**Proposition.** The number of partitions of $n$ in which only parts $\not\equiv0(\bmod\, 2^m)$ may
+be repeated, here denoted $p_α(n)$, equals the number of partitions of $n$ in which no part appears
+more than $2^{m+1}-1$ times, here denoted $p_β(n)$.
+
+*Proof.*
+\begin{align*}
+  \sum_{n\ge 0}p_α(n)q^n &= \prod_{n\ge 1}\left(1+q^{2^mn}\right)\left(\frac{1-q^{2^mn}}{1-q^n}\right)\\[0.5em]
+    &= \prod_{n\ge 1} \left(1+q^{2^mn}\right) \left(1+q^n+\cdots+q^{(2^m-1)n}\right)\\[0.5em]
+    &= \prod_{n\ge 1} \left(1+q^n+\cdots+q^{(2^{m+1}-1)n}\right)\\[0.5em]
+    &= \prod_{n\ge 1} \frac{1-q^{2^{m+1}n}}{1-q^n}\\[0.5em]
+    &= \sum_{n\ge 0} p_β(n)q^n.
+    \tag*{\blacksquare}
+\end{align*}

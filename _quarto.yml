@@ -1,0 +1,13 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Partition Theory"
+  navbar:
+    left:
+      - href: index.qmd
+      - text: ""
+
+format:
+  html: default
