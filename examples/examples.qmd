@@ -163,12 +163,12 @@ the number of partitions of $n$
 :::{.callout-caution}
 ## Scratchwork
 
-The generation function for
+The generating function for
 $p_α(n)$ is
 \begin{equation*}
   A(q)=\sum_{n\ge 1}\frac{q^n}{(q^{n+1};q)_n},
 \end{equation*}
-and the generation function for
+and the generating function for
 $p_β(n)$ is
 \begin{equation*}
   B(q)=\sum_{n\ge 1}\frac{q^{2n-1}}{(q^n;q)_n}.
