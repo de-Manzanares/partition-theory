@@ -174,20 +174,20 @@ $p_β(n)$ is
   B(q)=\sum_{n\ge 1}\frac{q^{2n-1}}{(q^n;q)_n}.
 \end{equation*}
 
-Let the $v^{\text{th}}$ term of the q-series $A(q)$ be denoted
+Let the $v^{\text{th}}$ term of $A(q)$ be denoted
 \begin{equation*}
   a_v(q)=\frac{q^v}{(q^{v+1};q)_v},
 \end{equation*}
-and let the $v^{\text{th}}$ term of the q-series $B(q)$ be denoted
+and let the $v^{\text{th}}$ term of $B(q)$ be denoted
 \begin{equation*}
   b_v(q)=\frac{q^{2v-1}}{(q^v;q)_v}.
 \end{equation*}
 
-Let $A_m(q)$ denote the bounded
+Let $A_m(q)$ denote the finite series
 \begin{equation*}
   A_m(q) = \sum_{n=1}^{2m-1}a_n(q),
 \end{equation*}
-and let $B_m(q)$ denote the bounded
+and let $B_m(q)$ denote the finite series
 \begin{equation*}
   B_m(q) = \sum_{n=1}^{m}b_n(q),
 \end{equation*}
