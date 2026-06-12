@@ -9,6 +9,7 @@ website:
       - icon: github
         href: https://github.com/de-Manzanares/partition-theory
         aria-label: GitHub
+  favicon: favicon.ico
 
 theme:
     light: flatly
