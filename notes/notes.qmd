@@ -27,7 +27,8 @@ format:
 \section{My Propositions}
 
 \begin{prop}
-  The number of partitions of $n$ in which parts $λ_1, λ_2,\dots,λ_m$ appear at least once equals
+  The number of partitions of $n$ in which positive distinct parts $λ_1, λ_2,\dots,λ_m$ each appear
+  at least once equals
   the number of partitions of $n-\sum_{i=1}^{m}λ_i$.
 \end{prop}
 
