@@ -23,6 +23,8 @@ format:
         \pretocmd{\tableofcontents}{\pagenumbering{roman}}{}{}
         \apptocmd{\tableofcontents}{\clearpage\pagenumbering{arabic}}{}{}
         \renewcommand\qedsymbol{$\blacksquare$}
+        \numberwithin{equation}{subsection}
+        \renewcommand{\theequation}{\arabic{subsection}.\arabic{equation}}
 ---
 
 \section{Chapter 1}
@@ -149,67 +151,98 @@ more than $2^{m+1}-1$ times, here denoted $p_β(n)$.
 \newpage
 \subsection{Example 4}
 
+**Proposition.**
+The number of partitions of $n$
+  with unique smallest part and largest part at most twice the smallest part,
+  here denoted $p_α(n)$,
+equals
+the number of partitions of $n$
+  in which the largest part is odd and the smallest part is larger than half the largest part,
+  here denoted $p_β(n)$.
+
 :::{.callout-caution}
 ## Scratchwork
 
-For some $m\in\mathbb{Z}_+$,
-let
+The generation function for
+$p_α(n)$ is
 \begin{equation*}
-  A_m(q)=\sum_{n=1}^{2m-1}q^n\left(q^{n+1}\right)_n^{-1},
+  A(q)=\sum_{n\ge 1}\frac{q^n}{(q^{n+1};q)_n},
 \end{equation*}
-and let
+and the generation function for
+$p_β(n)$ is
 \begin{equation*}
-  B_m(q)=\sum_{n=1}^{m}q^{2n-1}\left(q^n\right)_n^{-1}.
-\end{equation*}
-Then
-\begin{equation*}
-  A_m(q)\equiv B_m(q) \pmod{q^{2m}}.
+  B(q)=\sum_{n\ge 1}\frac{q^{2n-1}}{(q^n;q)_n}.
 \end{equation*}
 
+Let the $v^{\text{th}}$ term of the q-series $A(q)$ be denoted
+\begin{equation*}
+  a_v(q)=\frac{q^v}{(q^{v+1};q)_v},
+\end{equation*}
+and let the $v^{\text{th}}$ term of the q-series $B(q)$ be denoted
+\begin{equation*}
+  b_v(q)=\frac{q^{2v-1}}{(q^v;q)_v}.
+\end{equation*}
+
+Let $A_m(q)$ denote the bounded
+\begin{equation*}
+  A_m(q) = \sum_{n=1}^{2m-1}a_n(q),
+\end{equation*}
+and let $B_m(q)$ denote the bounded
+\begin{equation*}
+  B_m(q) = \sum_{n=1}^{m}b_n(q),
+\end{equation*}
+
+**Conjecture 1.**
+Then, for some $m\in\mathbb{Z}_+$,
+\begin{equation}\label{eqn:congruent}
+  A_m(q)\equiv B_m(q) \pmod{q^{2m}}.
+\end{equation}
+
+Let
 \begin{equation*}
   \rho_r(n,m)
   =
   \frac{1}{m}\sum_{j=0}^{m-1}e^{ 2\pi i j(n-r)/m}
   =
   \begin{cases}
-    1 &\text{if } n\equiv r \pmod{m}\\
-    0 &\text{otherwise}
+    1 &\text{if } n\equiv r \pmod{m},\\
+    0 &\text{otherwise}.
   \end{cases}
 \end{equation*}
-
+Then
 \begin{equation*}
-  [q^N]\left(q^v(q^{v+1})_v^{-1}\right)
+  [q^N]a_v(q)
   =
   \sum_{x_1+x_2+\cdots+x_v=N-v}
-  \,
-  \prod_{i=1}^{v} \rho_0(x_i,v+i)
+  \,\,
+  \prod_{i=1}^{v} \rho_0(x_i,v+i),
 \end{equation*}
-
-
+and
 \begin{equation*}
   [q^N]A_m(q)
   =
-  \sum_{v=1}^{2m-1} [q^N](q^v(q^{v+1})_v^{-1})
+  \sum_{v=1}^{2m-1} [q^N]a_v(q),
 \end{equation*}
-
+and
 \begin{equation*}
-  [q^N](q^{2v-1}(q^v)_v^{-1})
+  [q^N]b_v(q)
   =
   \sum_{x_1+x_2+\cdots+x_v=N-(2v-1)}
-  \,
-  \prod_{i=1}^{v} \rho_0(x_i,v+i-1)
+  \,\,
+  \prod_{i=1}^{v} \rho_0(x_i,v+i-1),
 \end{equation*}
-
+and
 \begin{equation*}
   [q^N]B_m(q)
   =
-  \sum_{v=1}^{m} [q^N](q^{2v-1}(q^v)_v^{-1})
+  \sum_{v=1}^{m} [q^N]b_v(q).
 \end{equation*}
 
-For all $0\le N<2m$
+**Conjecture 2.**
+Then, for all $0\le N<2m$
+\begin{equation}
+  [q^N]A_m(q) = [q^N]B_m(q).
+\end{equation}
 
-$$
-  [q^N]A_m(q) = [q^N]B_m(q)
-$$
-
+Conjecture 1 and Conjecture 2 are equivalent.
 :::
