@@ -193,7 +193,7 @@ and let $B_m(q)$ denote the finite series
 \end{equation*}
 
 **Conjecture 1.**
-Then, for some $m\in\mathbb{Z}_+$,
+Then, for all $m\in\mathbb{Z}_+$,
 \begin{equation}\label{eqn:congruent}
   A_m(q)\equiv B_m(q) \pmod{q^{2m}}.
 \end{equation}
