@@ -124,7 +124,7 @@ here denoted $p_3(n)$.
 \newpage
 \subsection{Example 3}
 
-**Proposition.** The number of partitions of $n$ in which only parts $\not\equiv0(\bmod\, 2^m)$ may
+**Proposition.** The number of partitions of $n$ in which only parts $\not\equiv 0 \pmod{2^m}$ may
 be repeated, here denoted $p_α(n)$, equals the number of partitions of $n$ in which no part appears
 more than $2^{m+1}-1$ times, here denoted $p_β(n)$.
 
@@ -145,3 +145,71 @@ more than $2^{m+1}-1$ times, here denoted $p_β(n)$.
       &= \sum_{n\ge 0} p_β(n)q^n.
   \end{align*}
 \end{proof}
+
+\newpage
+\subsection{Example 4}
+
+:::{.callout-caution}
+## Scratchwork
+
+For some $m\in\mathbb{Z}_+$,
+let
+\begin{equation*}
+  A_m(q)=\sum_{n=1}^{2m-1}q^n\left(q^{n+1}\right)_n^{-1},
+\end{equation*}
+and let
+\begin{equation*}
+  B_m(q)=\sum_{n=1}^{m}q^{2n-1}\left(q^n\right)_n^{-1}.
+\end{equation*}
+Then
+\begin{equation*}
+  A_m(q)\equiv B_m(q) \pmod{q^{2m}}.
+\end{equation*}
+
+\begin{equation*}
+  \rho_r(n,m)
+  =
+  \frac{1}{m}\sum_{j=0}^{m-1}e^{ 2\pi i j(n-r)/m}
+  =
+  \begin{cases}
+    1 &\text{if } n\equiv r \pmod{m}\\
+    0 &\text{otherwise}
+  \end{cases}
+\end{equation*}
+
+\begin{equation*}
+  [q^N]\left(q^v(q^{v+1})_v^{-1}\right)
+  =
+  \sum_{x_1+x_2+\cdots+x_v=N-v}
+  \,
+  \prod_{i=1}^{v} \rho_0(x_i,v+i)
+\end{equation*}
+
+
+\begin{equation*}
+  [q^N]A_m(q)
+  =
+  \sum_{v=1}^{2m-1} [q^N](q^v(q^{v+1})_v^{-1})
+\end{equation*}
+
+\begin{equation*}
+  [q^N](q^{2v-1}(q^v)_v^{-1})
+  =
+  \sum_{x_1+x_2+\cdots+x_v=N-(2v-1)}
+  \,
+  \prod_{i=1}^{v} \rho_0(x_i,v+i-1)
+\end{equation*}
+
+\begin{equation*}
+  [q^N]B_m(q)
+  =
+  \sum_{v=1}^{m} [q^N](q^{2v-1}(q^v)_v^{-1})
+\end{equation*}
+
+For all $0\le N<2m$
+
+$$
+  [q^N]A_m(q) = [q^N]B_m(q)
+$$
+
+:::
