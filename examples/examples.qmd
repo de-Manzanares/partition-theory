@@ -23,8 +23,8 @@ format:
         \pretocmd{\tableofcontents}{\pagenumbering{roman}}{}{}
         \apptocmd{\tableofcontents}{\clearpage\pagenumbering{arabic}}{}{}
         \renewcommand\qedsymbol{$\blacksquare$}
-        \numberwithin{equation}{subsection}
-        \renewcommand{\theequation}{\arabic{subsection}.\arabic{equation}}
+        \usepackage{mathtools}
+        \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 ---
 
 \section{Chapter 1}
@@ -163,86 +163,118 @@ the number of partitions of $n$
 :::{.callout-caution}
 ## Scratchwork
 
-The generating function for
-$p_α(n)$ is
-\begin{equation*}
-  A(q)=\sum_{n\ge 1}\frac{q^n}{(q^{n+1};q)_n},
-\end{equation*}
-and the generating function for
-$p_β(n)$ is
-\begin{equation*}
-  B(q)=\sum_{n\ge 1}\frac{q^{2n-1}}{(q^n;q)_n}.
-\end{equation*}
+Let
+\begin{equation}
+  a_n(q)=\frac{q^n}{(q^{n+1};q)_n}
+  ,\quad
+  b_n(q)=\frac{q^{2n-1}}{(q^n;q)_n}
+  ,
+\end{equation}
+and let
+\begin{equation}
+  A_m(q) = \sum_{n=1}^{2m-1}a_n(q)
+  ,\quad
+  B_m(q) = \sum_{n=1}^{m}b_n(q)
+  .
+\end{equation}
 
-Let the $v^{\text{th}}$ term of $A(q)$ be denoted
-\begin{equation*}
-  a_v(q)=\frac{q^v}{(q^{v+1};q)_v},
-\end{equation*}
-and let the $v^{\text{th}}$ term of $B(q)$ be denoted
-\begin{equation*}
-  b_v(q)=\frac{q^{2v-1}}{(q^v;q)_v}.
-\end{equation*}
-
-Let $A_m(q)$ denote the finite series
-\begin{equation*}
-  A_m(q) = \sum_{n=1}^{2m-1}a_n(q),
-\end{equation*}
-and let $B_m(q)$ denote the finite series
-\begin{equation*}
-  B_m(q) = \sum_{n=1}^{m}b_n(q),
-\end{equation*}
+Then
+\begin{equation}
+  \sum_{n\ge 1} p_α(n)q^n = \sum_{n\ge 1} a_n(q) = \lim_{m\to\infty}A_m(q) = A(q),
+\end{equation}
+and
+\begin{equation}
+  \sum_{n\ge 1} p_β(n)q^n = \sum_{n\ge 1} b_n(q) = \lim_{m\to\infty}B_m(q) = B(q).\\[1em]
+\end{equation}
 
 **Conjecture 1.**
-Then, for all $m\in\mathbb{Z}_+$,
+For all $m\in\mathbb{Z}_+$,
 \begin{equation}\label{eqn:congruent}
   A_m(q)\equiv B_m(q) \pmod{q^{2m}}.
 \end{equation}
 
 Let
-\begin{equation*}
+\begin{equation}
   \rho_r(n,m)
   =
   \frac{1}{m}\sum_{j=0}^{m-1}e^{ 2\pi i j(n-r)/m}
   =
   \begin{cases}
-    1 &\text{if } n\equiv r \pmod{m},\\
-    0 &\text{otherwise}.
+    1 &\text{if } n\equiv r \pmod{m}\\
+    0 &\text{otherwise}
   \end{cases}
-\end{equation*}
-Then
-\begin{equation*}
+\end{equation}
+so that, with $x_i\ge 0$, the coefficient extraction operations are
+\begin{equation}
   [q^N]a_v(q)
   =
   \sum_{x_1+x_2+\cdots+x_v=N-v}
   \,\,
-  \prod_{i=1}^{v} \rho_0(x_i,v+i),
-\end{equation*}
+  \prod_{i=1}^{v} \rho_0(x_i,v+i)
+  ,
+\end{equation}
 and
-\begin{equation*}
-  [q^N]A_m(q)
-  =
-  \sum_{v=1}^{2m-1} [q^N]a_v(q),
-\end{equation*}
-and
-\begin{equation*}
+\begin{equation}
   [q^N]b_v(q)
   =
   \sum_{x_1+x_2+\cdots+x_v=N-(2v-1)}
   \,\,
-  \prod_{i=1}^{v} \rho_0(x_i,v+i-1),
-\end{equation*}
+  \prod_{i=1}^{v} \rho_0(x_i,v+i-1)
+  .
+\end{equation}
+Then we have
+\begin{equation}
+  [q^N]A_m(q)
+  =
+  \sum_{v=1}^{2m-1} [q^N]a_v(q)
+  ,
+\end{equation}
 and
-\begin{equation*}
+\begin{equation}
   [q^N]B_m(q)
   =
-  \sum_{v=1}^{m} [q^N]b_v(q).
-\end{equation*}
+  \sum_{v=1}^{m} [q^N]b_v(q)
+  .
+\end{equation}
 
 **Conjecture 2.**
-Then, for all $0\le N<2m$
+For all $0\le N<2m$
 \begin{equation}
   [q^N]A_m(q) = [q^N]B_m(q).
 \end{equation}
 
 Conjecture 1 and Conjecture 2 are equivalent.
+
+\text{\\}
+**Other observations:**
+
+\text{\\}
+
+The ratios between successive terms are
+\begin{equation}
+  \frac{a_{n+1}}{a_n}
+  =
+  q\frac{(q^{n+1};q)_n}{(q^{n+2};q)_{n+1}}
+  =
+  q\frac{1-q^{n+1}}{(1-q^{2n+1})(1-q^{2n+2})}
+  ,
+\end{equation}
+and
+\begin{equation}
+  \frac{b_{n+1}}{b_n}
+  =
+  q^2\frac{(q^n;q)_n}{(q^{n+1};q)_{n+1}}
+  =
+  q^2\frac{1-q^n}{(1-q^{2n})(1-q^{2n+1})}
+  .
+\end{equation}
+
+Also, for $m>2$
+\begin{equation}
+  \frac{A_m(q)-B_m(q)}{q^{2m}}
+  =
+  \frac{1-q^{2\ceil{m/2}+2}}{1-q^2}+F(q)
+\end{equation}
+where $F(q)$ is some power series in which the lowest-degree term is of a degree greater than $m$.
+
 :::
