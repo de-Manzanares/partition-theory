@@ -1,15 +1,10 @@
 name: Publish Quarto site
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
-    paths:
-      - "*.qmd"
-      - "**/*.qmd"
-      - "_quarto.yml"
-      - ".github/workflows/publish.yml"
-  workflow_dispatch:
 
 jobs:
   build-deploy:
@@ -20,6 +15,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Compile LaTeX PDFs
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: |
+            examples.tex
+          working_directory: examples
+          latexmk_use_lualatex: true
 
       - uses: quarto-dev/quarto-actions/setup@v2
         with:
