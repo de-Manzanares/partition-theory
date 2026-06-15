@@ -7,15 +7,16 @@ project:
 website:
   title: "Partition Theory"
   navbar:
+    background: "#120023"
+    foreground: "#aaaaaa"
     right:
       - icon: github
         href: https://github.com/de-Manzanares/partition-theory
         aria-label: GitHub
   favicon: favicon.ico
 
-theme:
-    light: flatly
-    dark: darkly
-
 format:
-  html: default
+  html:
+    theme:
+      - cyborg
+      - custom.scss
