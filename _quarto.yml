@@ -21,5 +21,6 @@ website:
 format:
   html:
     theme:
-      - cyborg
-      - custom.scss
+      dark: cyborg
+      light: darkly
+    mainfont: Latin Modern Roman
