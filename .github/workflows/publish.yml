@@ -16,13 +16,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Compile LaTeX PDFs
+      - name: Compile LaTeX PDFs (1)
         uses: xu-cheng/latex-action@v4
         with:
           root_file: |
             examples.tex
+            examples-dark.tex
           working_directory: examples
           latexmk_use_lualatex: true
+
+      - name: Compile LaTeX PDFs (2)
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: |
+            notes.tex
+            notes-dark.tex
+          working_directory: notes
+          latexmk_use_lualatex: true
+
+      - name: Copy PDFs
+        run: |
+          mkdir pdf
+          cp examples/*.pdf pdf/
+          cp notes/*.pdf pdf/
 
       - uses: quarto-dev/quarto-actions/setup@v2
         with:

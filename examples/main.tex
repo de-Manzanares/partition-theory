@@ -1,0 +1,267 @@
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\clearpage\pagenumbering{arabic}
+
+
+\section{Chapter 1}\label{sec:chapter-1}
+
+\subsection{Example 1}\label{subsec:example-1}
+
+\noindent
+\textbf{Proposition.}
+The number of partitions of $n$ in which each part appears two, three, or five times
+equals the number of partitions of $n$ into parts congruent to 2, 3, 6, 9, or 10 modulo 12.
+
+\noindent
+\textbf{Lemma 1.}
+A positive integer is congruent to 2, 3, 6, 9, or 10 modulo 12 iff it is an odd
+multiple of 2 or an odd multiple of 3.
+
+\noindent
+\begin{proof}[Proof of Lemma 1]
+    The odd residue classes modulo 12 are [1], [3], [5], [7], [9], and [11].
+    An odd multiple of 2 has the form $2m$, where $m$ is odd.
+    Thus, the possible residue classes of $2m$ are
+    \begin{align*}
+        &2[1] = 2[7] = [2], \\
+        &2[3] = 2[9] = [6], \\
+        &2[5]  = 2[11] = [10].
+    \end{align*}
+    An odd multiple of 3 has the form $3m$, where $m$ is odd.
+    Thus, the possible residue classes of $3m$ are
+    \begin{align*}
+        &3[1] = 3[5] = 3[9] = [3], \\
+        &3[3] = 3[7] = 3[11] = [9].
+    \end{align*}
+    Therefore, the odd multiples of two or three are exactly the integers congruent to 2, 3, 6, 9, or 10 modulo 12.
+\end{proof}
+
+\begin{proof}[Proof of the Proposition]
+        Let $p_\alpha(n)$ denote the number of partitions of $n$
+        in which each part appears two, three, or five times.
+        Let $p_\beta(n)$ denote the number of partitions of $n$
+        into parts congruent to 2, 3, 6, 9, or 10 modulo 12.
+        Thus
+        \[
+            \sum_{n\ge 0}p_\alpha(n)q^n=\prod_{n\ge 1}\left(1+q^{2n}+q^{3n}+q^{5n}\right),
+        \]
+        and by Lemma 1
+        \[
+            \sum_{n\ge 0}p_\beta(n)q^n = \prod_{n\ge 1}\frac{1}{(1-q^{2(2n-1)})(1-q^{3(2n-1)})}.
+        \]
+        Finally
+        \begin{align*}
+            \sum_{n\ge 0}p_\beta(n)q^n &=\prod_{n\ge 1} \frac{1-q^{4n}}{1-q^{2n}}\cdot\frac{1-q^{6n}}{1-q^{3n}} \\[0.5em]
+            &=\prod_{n\ge 1}\left(1+q^{2n}\right)\left(1+q^{3n}\right)\\[0.5em]
+            &=\prod_{n\ge 1}\left(1+q^{2n}+q^{3n}+q^{5n}\right)\\[0.5em]
+            &=\sum_{n\ge 0}p_\alpha(n)q^n.
+        \end{align*}
+\end{proof}
+
+\begin{proof}[Proof of the Proposition (q-Pochhammer)]
+        Let $p_\alpha(n)$ denote the number of partitions of $n$
+        in which each part appears two, three, or five times.
+        Let $p_\beta(n)$ denote the number of partitions of $n$
+        into parts congruent to 2, 3, 6, 9, or 10 modulo 12.
+        Thus
+        \[
+            \sum_{n\ge 0}p_\alpha(n)q^n=(-q^2;q^2)_\infty (-q^3;q^3)_\infty,
+        \]
+        and by Lemma 1
+        \[
+            \sum_{n\ge 0}p_\beta(n)q^n = \frac{1}{(q^2;q^4)_\infty(q^3;q^6)_\infty}.
+        \]
+        Finally
+        \begin{align*}
+            \sum_{n\ge 0}p_\beta(n)q^n &= \frac{(q^4;q^4)_\infty (q^6;q^6)_\infty}{(q^2;q^2)_\infty (q^3;q^3)_\infty} \\[0.5em]
+            &= (-q^2;q^2)_\infty (-q^3;q^3)_\infty \\[0.5em]
+            &= \sum_{n\ge 0}p_\alpha(n)q^n.
+        \end{align*}
+\end{proof}
+
+\newpage
+
+\subsection{Example 2}\label{subsec:example-2}
+
+\textbf{Proposition.}
+The number of partitions of $n$ in which only odd parts may be repeated, here denoted $p_o(n)$,
+equals the number of partitions of $n$ in which no part is repeated more than three times,
+here denoted $p_3(n)$.
+
+\begin{proof}
+    \begin{align*}
+        \sum_{n\ge 0} p_o(n)q^n&=\prod_{n\ge 1}\left(1+q^{2n}\right)\left(\frac{1}{1-q^{2n-1}}\right)\\[0.5em]
+        &=\prod_{n\ge 1}\left(\frac{1-q^{4n}}{1-q^{2n}}\right)\left(\frac{1}{1-q^{2n-1}}\right)\\[0.5em]
+        &=\frac{\prod_{n\ge1}(1-q^{4n})}{\prod_{n\ge 1}(1-q^{2n})(1-q^{2n-1})}\\[0.5em]
+        &=\prod_{n\ge 1}\frac{1-q^{4n}}{1-q^n}\\[0.5em]
+        &=\sum_{n\ge 0}p_3(n)q^n.
+    \end{align*}
+\end{proof}
+
+\begin{proof}[Proof (q-Pochhammer)]
+        \begin{align*}
+            \sum_{n\ge 0} p_o(n)q^n &= (-q^2;q^2)_\infty (q;q^2)_\infty^{-1} \\
+            &= \frac{(q^4;q^4)_\infty}{(q^2;q^2)_\infty (q;q^2)_\infty} \\[0.75em]
+            &= \frac{(q^4;q^4)_\infty}{(q;q)_\infty} \\[0.75em]
+            &= \sum_{n\ge 0} p_3(n)q^n.
+        \end{align*}
+\end{proof}
+
+\newpage
+
+\subsection{Example 3}\label{subsec:example-3}
+
+\textbf{Proposition.}
+The number of partitions of $n$ in which only parts $\not\equiv 0 \pmod{2^m}$ may
+be repeated, here denoted $p_\alpha(n)$, equals the number of partitions of $n$ in which no part appears
+more than $2^{m+1}-1$ times, here denoted $p_\beta(n)$.
+
+\begin{proof}
+    \begin{align*}
+        \sum_{n\ge 0}p_\alpha(n)q^n &= \prod_{n\ge 1}\left(1+q^{2^m n}\right)\left(\frac{1-q^{2^mn}}{1-q^n}\right)\\[0.5em]
+        &= \prod_{n\ge 1} \left(1+q^{2^mn}\right) \left(1+q^n+\cdots+q^{(2^m-1)n}\right)\\[0.5em]
+        &= \prod_{n\ge 1} \left(1+q^n+\cdots+q^{(2^{m+1}-1)n}\right)\\[0.5em]
+        &= \prod_{n\ge 1} \frac{1-q^{2^{m+1}n}}{1-q^n}\\[0.5em]
+        &= \sum_{n\ge 0} p_\beta(n)q^n.
+    \end{align*}
+\end{proof}
+
+\begin{proof}[Proof (q-Pochhammer)]
+  \begin{align*}
+      \sum_{n\ge 0}p_\alpha(n)q^n &= (-q^{2^m},q^{2^m};q^{2^m})_\infty (q;q)_\infty^{-1} \\
+      &= \frac{(q^{2^{m+1}};q^{2^{m+1}})_\infty}{(q;q)_\infty} \\[0.75em]
+      &= \sum_{n\ge 0} p_\beta(n)q^n.
+  \end{align*}
+\end{proof}
+
+\newpage
+
+\subsection{Example 4}\label{subsec:example-4}
+
+\textbf{Proposition.}
+The number of partitions of $n$
+with unique smallest part and largest part at most twice the smallest part,
+here denoted $p_\alpha(n)$,
+equals
+the number of partitions of $n$
+in which the largest part is odd and the smallest part is larger than half the largest part,
+here denoted $p_\beta(n)$.
+
+\subsubsection*{Scratchwork}
+
+Let
+\begin{equation}
+    a_n(q)=\frac{q^n}{(q^{n+1};q)_n}
+    ,\quad
+    b_n(q)=\frac{q^{2n-1}}{(q^n;q)_n}
+    ,
+\end{equation}
+And let
+\begin{equation}
+    A_m(q) = \sum_{n=1}^{2m-1}a_n(q)
+    ,\quad
+    B_m(q) = \sum_{n=1}^{m}b_n(q)
+    .
+\end{equation}
+
+Then
+\begin{equation}
+    \sum_{n\ge 1} p_\alpha(n)q^n = \sum_{n\ge 1} a_n(q) = \lim_{m\to\infty}A_m(q) = A(q),
+\end{equation}
+And
+\begin{equation}
+    \sum_{n\ge 1} p_\beta(n)q^n = \sum_{n\ge 1} b_n(q) = \lim_{m\to\infty}B_m(q) = B(q).\\[1em]
+\end{equation}
+
+\begin{conjecture}\label{conj:congruent}
+    For all $m\in\mathbb{Z}_+$,
+    \begin{equation}\label{eq:congruent}
+        A_m(q)\equiv B_m(q) \pmod{q^{2m}}.
+    \end{equation}
+\end{conjecture}
+Let
+\begin{equation}
+    \rho_r(n,m)
+    =
+    \frac{1}{m}\sum_{j=0}^{m-1}e^{ 2\pi i j(n-r)/m}
+    =
+    \begin{cases}
+        1 &\text{if } n\equiv r \pmod{m}\\
+        0 &\text{otherwise}
+    \end{cases}
+\end{equation}
+so that, with $x_i\ge 0$, the coefficient extraction operations are
+\begin{equation}
+    [q^N]a_v(q)
+    =
+    \sum_{x_1+x_2+\cdots+x_v=N-v}
+    \,\,
+    \prod_{i=1}^{v} \rho_0(x_i,v+i)
+    ,
+\end{equation}
+And
+\begin{equation}
+    [q^N]b_v(q)
+    =
+    \sum_{x_1+x_2+\cdots+x_v=N-(2v-1)}
+    \,\,
+    \prod_{i=1}^{v} \rho_0(x_i,v+i-1)
+    .
+\end{equation}
+Then we have
+\begin{equation}
+    [q^N]A_m(q)
+    =
+    \sum_{v=1}^{2m-1} [q^N]a_v(q)
+    ,
+\end{equation}
+And
+\begin{equation}
+    [q^N]B_m(q)
+    =
+    \sum_{v=1}^{m} [q^N]b_v(q)
+    .
+\end{equation}
+
+\begin{conjecture}\label{conj:coefficients}
+    For all $0\le N<2m$
+    \begin{equation}
+        [q^N]A_m(q) = [q^N]B_m(q).
+    \end{equation}
+\end{conjecture}
+Conjecture~\autoref{conj:congruent} and Conjecture~\autoref{conj:coefficients} are equivalent.
+
+\subsubsection*{Other Observations}
+
+The ratios between successive terms are
+\begin{equation}
+    \frac{a_{n+1}}{a_n}
+    =
+    q\frac{(q^{n+1};q)_n}{(q^{n+2};q)_{n+1}}
+    =
+    q\frac{1-q^{n+1}}{(1-q^{2n+1})(1-q^{2n+2})}
+    ,
+\end{equation}
+and
+\begin{equation}
+    \frac{b_{n+1}}{b_n}
+    =
+    q^2\frac{(q^n;q)_n}{(q^{n+1};q)_{n+1}}
+    =
+    q^2\frac{1-q^n}{(1-q^{2n})(1-q^{2n+1})}
+    .
+\end{equation}
+Also, for $m>2$
+\begin{equation}
+    \frac{A_m(q)-B_m(q)}{q^{2m}}
+    =
+    \frac{1-q^{2\ceil{m/2}+2}}{1-q^2}+F(q)
+\end{equation}
+Where $F(q)$ is some power series in which the lowest-degree term is of a degree greater than $m$.
+
+\end{document}

@@ -1,7 +1,9 @@
 ---
-title: "Document List"
+title: "Documents"
 ---
 
-- [Personal Notes on Partition Theory](notes/notes.pdf)
+- Personal Notes on Partition Theory
+([dark](pdf/notes-dark.pdf){target="blank"}|[light](pdf/notes.pdf){target="blank"})
 
-- [Proofs of Selected Examples from The Theory of Partitions](examples/examples.pdf)
+- Proofs of Selected Examples from *The Theory of Partitions*
+([dark](pdf/examples-dark.pdf){target="blank"}|[light](pdf/examples.pdf){target="blank"})

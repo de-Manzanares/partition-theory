@@ -2,7 +2,10 @@ project:
   type: website
   output-dir: _site
   resources:
-    - examples/examples.pdf
+    - pdf/examples.pdf
+    - pdf/examples-dark.pdf
+    - pdf/notes.pdf
+    - pdf/notes-dark.pdf
 
 website:
   title: "Partition Theory"
