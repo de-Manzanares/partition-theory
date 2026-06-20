@@ -1,0 +1,189 @@
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\clearpage\pagenumbering{arabic}
+
+
+\section{Exercises from Lecture Notes For An Introductory Minicourse on q-Series}\label{sec:lecture}
+
+\paragraph{1.1} Verify the inversion identity.
+
+\vspace{1.0em}
+\noindent
+Note that $0+1+2+\cdots+(n-1)=\frac{n(n-1)}{2}=\binom{n}{2}$.
+\begin{align*}
+    (a;q)_n &= (1-a)(1-aq)(1-aq^{2})\cdots(1-aq^{n-1})\\
+    &= (1-a)(q^{-1}-a)(q^{-2}-a)\cdots(q^{-(n-1)}-a)\,q^{\binom{n}{2}}\\
+    &= (1-a^{-1})(1-a^{-1}q^{-1})\cdots(1-a^{-1}q^{-(n-1)})(-a)^n q^{\binom{n}{2}}\\
+    &= (a^{-1};q^{-1})_n (-a)^{n} q^{\binom{n}{2}}
+\end{align*}
+
+\vspace{1.0em}
+\noindent
+In parts (\textit{ii}) through (\textit{v}), $k$ and $n$ are nonnegative integers.
+
+\subparagraph{(\textit{i})}\label{subpar:1.1(i)}
+\begin{align*}
+    (a;q)_n &=(1-a)(1-aq)\cdots(1-aq^{n-1})\\[0.5em]
+    &=\frac{(1-a)(1-aq)\cdots(1-aq^{n-1})(1-aq^n)\cdots}{(1-aq^n)(1-aq^{n+1})\cdots}\\
+    &=\frac{(a;q)_\infty}{(aq^n;q)_\infty}
+\end{align*}
+
+\subparagraph{(\textit{ii})}\label{subpar:1.1(ii)}
+\begin{align*}
+    (a;q)_{n+k} &= (1-a)\cdots(1-aq^{n-1})\cdot(1-aq^n)\cdots(1-aq^{n+k-1})\\
+    &= (a;q)_n(aq^n;q)_k\\
+    &= (1-a)\cdots(1-aq^{k-1})\cdot(1-aq^k)\cdots(1-aq^{k+n-1})\\
+    &= (a;q)_k(aq^k;q)_n
+\end{align*}
+
+\subparagraph{(\textit{iii})}\label{subpar:1.1(iii)}
+\begin{align*}
+    (aq^n;q)_k &= \frac{(a;q)_n(aq^n;q)_k}{(a;q)_n} = \frac{(a;q)_k(aq^k;q)_n}{(a;q)_n} \\[0.5em]
+\end{align*}
+
+\subparagraph{(\textit{iv})}\label{subpar:1.1(iv)}
+By identity (\textit{ii}),
+\[
+    (a;q)_{k-n}=(a;q)_{-n}(aq^{-n};q)_k = (a;q)_k(aq^k;q)_{-n}.
+\]
+We begin by writing
+\begin{align*}
+    (aq^{-n};q)_k &= \frac{(a;q)_{k-n}}{(a;q)_{-n}}
+    = \frac{(a;q)_k(aq^k;q)_{-n}}{(a;q)_{-n}}.
+\end{align*}
+Using the definition $(a;q)_{-n}=(aq^{-n};q)_n^{-1}$, we simplify this to
+\begin{align*}
+    (aq^{-n};q)_k &= \frac{(a;q)_k(aq^{-n};q)_n}{(aq^{k-n};q)_n}.
+\end{align*}
+We can simplify further:
+\begin{align*}
+    (aq^{-n};q)_n &= \prod_{j=0}^{n-1}(1-aq^{-n}q^j) = \prod_{j=1}^{n}(1-aq^{-j}) \\
+    &= \prod_{j=1}^{n}(-aq^{-j})(1-a^{-1}q^{j})
+    = (-a)^n q^{-\binom{n+1}{2}}(a^{-1}q;q)_n,
+\end{align*}
+and
+\begin{align*}
+    (aq^{k-n};q)_n &= \prod_{j=0}^{n-1}(1-aq^{k-n}q^j) = \prod_{j=1}^{n}(1-aq^{k-j})\\
+    &= \prod_{j=1}^{n}(-aq^{k-j})(1-a^{-1}q^{j-k})
+    = (-a)^n q^{kn} q^{-\binom{n+1}{2}} (a^{-1} q^{1-k};q)_n.
+\end{align*}
+Thus
+\begin{align*}
+    (aq^{-n};q)_k &= \frac{(a;q)_k(-a)^n q^{-\binom{n+1}{2}}(a^{-1}q;q)_n}{(-a)^n q^{kn} q^{-\binom{n+1}{2}} (a^{-1} q^{1-k};q)_n}\\[0.5em]
+    &= \frac{(a;q)_k (a^{-1}q;q)_n}{(a^{-1} q^{1-k};q)_n}q^{-kn}.
+\end{align*}
+
+\subparagraph{(\textit{v})}
+\begin{align*}
+    \frac{1-aq^{2n}}{1-a} &= \frac{(aq^2;q^2)_n}{(a;q^2)_n}
+    = \frac{(1-aq^2)\cdots(1-aq^{2n})}{(1-a)\cdots(1-aq^{2n-2})} \\[0.5em]
+    &= \frac{(1-a^{\frac{1}{2}}q)(1+a^{\frac{1}{2}}q)\cdots(1-a^{\frac{1}{2}}q^{n})(1+a^{\frac{1}{2}}q^{n})}{(1-a^{\frac{1}{2}})(1+a^{\frac{1}{2}})\cdots(1-a^{\frac{1}{2}}q^{n-1})(1+a^{\frac{1}{2}}q^{n-1})}\\[0.5em]
+    &= \frac{(qa^{\frac{1}{2}};q)_n (-qa^{\frac{1}{2}};q)_n}{(a^{\frac{1}{2}};q)_n(-a^{\frac{1}{2}};q)_n}.
+\end{align*}
+
+\clearpage
+
+
+\section{Exercises from \emph{Basic Hypergeometric Series}}\label{sec:bhs}
+
+\paragraph{1.1}
+Verify the identities (1.2.30)-(1.2.40); $k$ and $n$ are integers.
+
+\subparagraph{(1.2.30)}
+In the case that $n$ is a positive integer, See exercise 1.1(\textit{i}) on~\autopageref{subpar:1.1(i)}.
+If $n=-m$, $m\in\mathbb{Z}_+$ then
+\begin{align*}
+    (a;q)_{-m} &= \frac{1}{(aq^{-m};q)_m} = \frac{(a;q)_\infty}{(aq^{-m};q)_\infty}.
+\end{align*}
+
+\subparagraph{(1.2.31)}
+Note that $0+1+2+\cdots+(n-1)=\frac{n(n-1)}{2}=\binom{n}{2}$.
+\begin{align*}
+    (a^{-1}q^{1-n};q)_n &= \prod_{j=0}^{n-1}(1-a^{-1}q^{1-n+j})=\prod_{j=0}^{n-1}(1-a^{-1}q^{-j})\\
+    &= \prod_{j=0}^{n-1}(-a^{-1}q^{-j})(1-aq^{j}) = (-a^{-1})^n q^{-\binom{n}{2}} (a;q)_n.
+\end{align*}
+
+\subparagraph{(1.2.32)}
+\[
+    (a;q)_{n-k} = (a;q)_n (aq^n;q)_{-k} = \frac{(a;q)_n}{(aq^{n-k};q)_k}.
+\]
+And
+\begin{align*}
+    (aq^{n-k};q)_k &= \prod_{j=0}^{k-1} (1-aq^{n-k+j}) = \prod_{j=1}^{k} (1-aq^{n-j}) \\
+    &= \prod_{j=1}^{k} (-aq^{n-j})(1-a^{-1}q^{j-n})
+    = (-a)^k q^{kn - \binom{k}{2} - k } (a^{-1} q^{1-n};q)_k\\
+    &= (-q/a)^{-k} q^{kn - \binom{k}{2}} (a^{-1} q^{1-n};q)_k,
+\end{align*}
+thus
+\[
+    (a;q)_{n-k} = \frac{(a;q)_n}{(a^{-1} q^{1-n};q)_k}\,(-q/a)^k q^{\binom{k}{2}-kn}.
+\]
+
+\subparagraph{(1.2.33)}
+For $n,k\in\mathbb{Z}_+$, See exercise 1.1(\textit{ii}) on~\autopageref{subpar:1.1(ii)}.
+For $n,k\in\mathbb{Z}$, identity (1.2.33) may be verified by using repeated applications of identity (1.2.30).
+\begin{align*}
+    (a;q)_{n+k}&=\frac{(a;q)_\infty}{(aq^{n+k};q)_\infty}
+    = (a;q)_n \frac{(a;q)_\infty}{(a;q)_n(aq^{n+k})_\infty}\\[0.5em]
+    &= (a;q)_n\frac{(aq^n;q)_{\infty}}{(aq^{n+k};q)_\infty}\\[0.5em]
+    &= (a;q)_n(aq^n;q)_k.
+\end{align*}
+By the same argument, $(a;q)_{n+k}=(a;q)_k(aq^k;q)_n.$
+
+\subparagraph{(1.2.34)}
+See exercise 1.1(\textit{iii}) on~\autopageref{subpar:1.1(iii)}.
+The argument is extended to negative integers by identity (1.2.33).
+
+\subparagraph{(1.2.35)}
+By (1.2.33),
+\[
+    (a;q)_{k+(n-k)} = (a;q)_k(aq^k;a)_{n-k} \iff (aq^k;a)_{n-k} = \frac{(a;q)_n}{(a;q)_k}.
+\]
+
+\subparagraph{(1.2.36)}
+By (1.2.33),
+\[
+    (a;q)_{2k+n-k}=(a;q)_{2k} (aq^{2k};1)_{n-k} \iff (aq^{2k};q)_{n-k}= \frac{(a;q)_{n+k}}{(a;q)_{2k}}.
+\]
+Therefore
+\[
+    (aq^{2k};q)_{n-k}= \frac{(a;q)_n (aq^n;q)_k}{(a;q)_{2k}}.
+\]
+
+\subparagraph{(1.2.37)}
+\begin{align*}
+    (q^{-n};q)_k &= \prod_{j=0}^{k-1} (1-q^{j-n}) = \prod_{j=0}^{k-1} (-q^{j-n})(1-q^{n-j}) \\
+    &= (-1)^k q^{\binom{k}{2}-nk} \prod_{j=0}^{k-1} (1-q^{n-j}) \\
+    &= (-1)^k q^{\binom{k}{2}-nk} (1-q^n)(1-q^{n-1})\cdots(1-q^{n-(k-1)}) \\
+    &= (-1)^k q^{\binom{k}{2}-nk} \frac{(1-q)(1-q^2)\cdots(1-q^{n-k+1})\cdots(1-q^n)}{(1-q)(1-q^2)\cdots(1-q^{n-k})}\\
+    &= (-1)^k q^{\binom{k}{2}-nk} \frac{(q;q)_n}{(q;q)_{n-k}}\\
+\end{align*}
+
+\subparagraph{(1.2.38)}
+See exercise 1.1(\textit{iv}) on~\autopageref{subpar:1.1(iv)}.
+
+\subparagraph{(1.2.39)}
+\begin{align*}
+    (a;q)_{2n}&=(1-a)(1-aq)(1-aq^2)(1-aq^3)\cdots(1-aq^{2n-2})(1-aq^{2n-1})\\
+    &=(1-a)(1-aq^2)\cdots(1-aq^{2n-2})\cdot(1-aq)(1-aq^3)\cdots(1-aq^{2n-1})\\
+    &=(a;q^2)_n (aq;q^2)_n
+\end{align*}
+
+\subparagraph{(1.2.40)}
+\begin{align*}
+    (a^2;q^2)_n &= (1-a^2)(1-a^2 q^2)\cdots(1-a^2 q^{2n-1})\\
+    &= (1-a)(1+a)(1-aq)(1+aq)\cdots (1-aq^{n-1})(1+aq^{n-1})\\
+    &= (a;q)_n (-a;q)_n
+\end{align*}
+
+\clearpage
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{bib}{}
+
+\end{document}

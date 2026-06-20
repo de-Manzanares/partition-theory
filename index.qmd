@@ -2,6 +2,9 @@
 title: "Documents"
 ---
 
+- Exercises with q-Shifted Factorials
+([dark](pdf/q-shifted_factorial_exercises-dark.pdf){target="blank"}|[light](pdf/q-shifted_factorial_exercises.pdf){target="blank"})
+
 - Personal Notes on Partition Theory
 ([dark](pdf/notes-dark.pdf){target="blank"}|[light](pdf/notes.pdf){target="blank"})
 

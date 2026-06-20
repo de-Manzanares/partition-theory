@@ -6,6 +6,8 @@ project:
     - pdf/examples-dark.pdf
     - pdf/notes.pdf
     - pdf/notes-dark.pdf
+    - pdf/q-shifted_factorial_exercises.pdf
+    - pdf/q-shifted_factorial_exercises-dark.pdf
 
 website:
   title: "Partition Theory"
