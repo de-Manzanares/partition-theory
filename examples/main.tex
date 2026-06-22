@@ -1,4 +1,3 @@
-
 \begin{document}
 
 \maketitle
@@ -10,7 +9,8 @@
 
 \section{Chapter 1}\label{sec:chapter-1}
 
-\subsection{Example 1}\label{subsec:example-1}
+\subsection*{Example 1}\label{subsec:example-1}
+\addcontentsline{toc}{subsection}{Example 1}
 
 \noindent
 \textbf{Proposition.}
@@ -86,7 +86,8 @@ multiple of 2 or an odd multiple of 3.
 
 \newpage
 
-\subsection{Example 2}\label{subsec:example-2}
+\subsection*{Example 2}\label{subsec:example-2}
+\addcontentsline{toc}{subsection}{Example 2}
 
 \textbf{Proposition.}
 The number of partitions of $n$ in which only odd parts may be repeated, here denoted $p_o(n)$,
@@ -114,7 +115,8 @@ here denoted $p_3(n)$.
 
 \newpage
 
-\subsection{Example 3}\label{subsec:example-3}
+\subsection*{Example 3}\label{subsec:example-3}
+\addcontentsline{toc}{subsection}{Example 3}
 
 \textbf{Proposition.}
 The number of partitions of $n$ in which only parts $\not\equiv 0 \pmod{2^m}$ may
@@ -141,7 +143,8 @@ more than $2^{m+1}-1$ times, here denoted $p_\beta(n)$.
 
 \newpage
 
-\subsection{Example 4}\label{subsec:example-4}
+\subsection*{Example 4}\label{subsec:example-4}
+\addcontentsline{toc}{subsection}{Example 4}
 
 \textbf{Proposition.}
 The number of partitions of $n$
@@ -238,30 +241,53 @@ Conjecture~\autoref{conj:congruent} and Conjecture~\autoref{conj:coefficients} a
 
 \subsubsection*{Other Observations}
 
-The ratios between successive terms are
-\begin{equation}
-    \frac{a_{n+1}}{a_n}
-    =
-    q\frac{(q^{n+1};q)_n}{(q^{n+2};q)_{n+1}}
-    =
-    q\frac{1-q^{n+1}}{(1-q^{2n+1})(1-q^{2n+2})}
-    ,
-\end{equation}
-and
-\begin{equation}
-    \frac{b_{n+1}}{b_n}
-    =
-    q^2\frac{(q^n;q)_n}{(q^{n+1};q)_{n+1}}
-    =
-    q^2\frac{1-q^n}{(1-q^{2n})(1-q^{2n+1})}
-    .
-\end{equation}
-Also, for $m>2$
+For $m>2$
 \begin{equation}
     \frac{A_m(q)-B_m(q)}{q^{2m}}
     =
     \frac{1-q^{2\ceil{m/2}+2}}{1-q^2}+F(q)
 \end{equation}
 Where $F(q)$ is some power series in which the lowest-degree term is of a degree greater than $m$.
+
+\subsubsection*{Expressed in terms of $_r\phi_s$ basic hypergeometric series}
+
+\begin{gather*}
+    \sum_{n\ge 0} p_{\alpha}(n)q^n =
+    \,_4\phi_3
+    \left[
+        \begin{matrix}
+            q,0,0,0\\
+            -q,q^{\frac{1}{2}},-q^{\frac{1}{2}}
+        \end{matrix};
+    q,q
+    \right],
+\end{gather*}
+
+\[
+    \sum_{n\ge 0} p_{\beta}(n)q^n =
+    \frac{q}{1-q}
+    \,_4\phi_3
+    \left[
+        \begin{matrix}
+            q,0,0,0\\
+            -q,q^{\frac{3}{2}},-q^{\frac{3}{2}}
+        \end{matrix};
+    q,q^2
+    \right],\\
+\]
+
+Where $_r\phi_s$ is defined as
+\[
+    _r\phi_s
+    \left[
+        \begin{matrix}
+            a_1,\dots,a_r\\
+            b_1,\dots,b_s
+        \end{matrix};
+    q,z
+    \right]
+    =
+    \sum_{n\ge 0} \frac{(a_1,\dots,a_r;q)_n}{(q,b_1,\dots,b_s;q)_n}z^n
+\]
 
 \end{document}
