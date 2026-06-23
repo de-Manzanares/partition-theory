@@ -251,8 +251,8 @@ Where $F(q)$ is some power series in which the lowest-degree term is of a degree
 
 \subsubsection*{Expressed in terms of $_r\phi_s$ basic hypergeometric series}
 
-\begin{gather*}
-    \sum_{n\ge 0} p_{\alpha}(n)q^n =
+\begin{equation}
+    \sum_{n\ge 1} p_{\alpha}(n)q^n =
     \,_4\phi_3
     \left[
         \begin{matrix}
@@ -260,11 +260,11 @@ Where $F(q)$ is some power series in which the lowest-degree term is of a degree
             -q,q^{\frac{1}{2}},-q^{\frac{1}{2}}
         \end{matrix};
     q,q
-    \right],
-\end{gather*}
+    \right]-1,
+\end{equation}
 
 \[
-    1+\sum_{n\ge 1} p_{\beta}(n)q^n =
+    \sum_{n\ge 1} p_{\beta}(n)q^n =
     \frac{q}{1-q}
     \,_4\phi_3
     \left[
@@ -281,13 +281,17 @@ Where $_r\phi_s$ is defined as
     _r\phi_s
     \left[
         \begin{matrix}
-            a_1,\dots,a_r\\
+            a_1,a_2,\dots,a_r\\
             b_1,\dots,b_s
         \end{matrix};
     q,z
     \right]
     =
-    \sum_{n\ge 0} \frac{(a_1,\dots,a_r;q)_n}{(q,b_1,\dots,b_s;q)_n}z^n
+    \sum_{n\ge 0} \frac{(a_1,a_2,\dots,a_r;q)_n}{(q,b_1,\dots,b_s;q)_n}
+    \left[
+        (-1)^n q^{\binom{n}{2}}
+    \right]^{1+s-r}
+    z^n.
 \]
 
 \end{document}
